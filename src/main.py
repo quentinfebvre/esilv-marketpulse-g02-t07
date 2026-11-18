@@ -38,6 +38,8 @@ def get_last_date(prices):
 def display_market_summary(asset, prices, show_currency=True):
     print(f"Instrument" if show_currency else "Benchmark")
     print(f"{asset['ticker']} {asset['name']}")
+    print(f"Market      : {asset['market']}")
+    print(f"Currency    : {asset['currency']}")
     print(f"Observations: {len(prices)}")
 
     print(f"First date  : {get_first_date(prices)}")
