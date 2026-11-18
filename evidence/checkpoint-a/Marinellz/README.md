@@ -1,69 +1,15 @@
-# Evidence
+# Checkpoint A Evidence - Marinellz
 
-This directory stores individual MarketPulse checkpoint evidence.
+Ce dossier contient les éléments de preuve individuels pour valider le Checkpoint A du projet **MarketPulse** (TD04).
 
-The single source of truth for all evidence requirements is:
+## Résumé de la contribution individuelle
+- **Fonctionnalité réalisée** : Affichage des dates de première et dernière observation ainsi que des cours de clôture associés dans le script principal (`src/main.py`).
+- **Gestion Git** : 
+  - Création et utilisation d'une branche de fonctionnalité dédiée.
+  - Fusion propre (*merge*) dans la branche `main` avec validation du bon fonctionnement.
+  - Nettoyage et conservation d'un historique de commit clair.
 
-```text
-docs/04_CHECKPOINTS_AND_EVIDENCE.md
-```
-
-That document defines the official filenames, required screenshots, optional evidence, individual README content, live validation principles and security rules.
-
-Do not create a parallel evidence specification in this directory.
-
-## Directory convention
-
-Each student stores evidence under their own GitHub username:
-
-```text
-evidence/
-├── checkpoint-a/
-│   └── <github-username>/
-├── checkpoint-b/
-│   └── <github-username>/
-└── checkpoint-c/
-    └── <github-username>/
-```
-
-Each checkpoint directory must contain the student's checkpoint `README.md` and the evidence files required by the canonical contract.
-
-## Important
-
-Evidence is collected only for:
-
-- Checkpoint A;
-- Checkpoint B;
-- Checkpoint C.
-
-Do not add screenshots for every TD.
-
-Screenshots complement:
-
-- Git history;
-- Pull Requests;
-- reviews;
-- execution;
-- explanation.
-
-They do not replace those elements.
-
-## Security
-
-Before committing any evidence, inspect it carefully.
-
-Never expose:
-
-- passwords;
-- API keys;
-- access tokens;
-- SSH private keys;
-- Bloomberg credentials;
-- cloud credentials;
-- payment information.
-
-For exact filenames and validation criteria, always return to:
-
-```text
-docs/04_CHECKPOINTS_AND_EVIDENCE.md
-```
+## Fichiers de preuves inclus
+1. **`01_terminal_python.png`** : Capture d'écran de l'exécution réussie de `python src/main.py` affichant les dates et les cours de clôture (Benchmark SP500, observations du 2026-09-01 au 2026-09-30).
+2. **`02_git_status_log.png`** : Capture d'écran du terminal montrant l'historique récent des commits (`git log`) incluant le commit de la fonctionnalité.
+3. **`03_branch_merge.png`** : Capture du graphe des branches (`git log --oneline --graph --decorate --all`) attestant de la fusion correcte sur la branche `main`.
