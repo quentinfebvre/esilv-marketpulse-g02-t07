@@ -26,6 +26,31 @@ def filter_prices(prices, ticker):
     return [row for row in prices if row["ticker"] == ticker]
 
 
+def get_first_close(prices):
+    return float(prices[0]["close"])
+
+
+def get_last_close(prices):
+    return float(prices[-1]["close"])
+
+def display_market_summary(asset, prices, show_currency=True):
+    first_close = get_first_close(prices)
+    last_close = get_last_close(prices)
+
+    ticker = asset["ticker"]
+    name = asset["name"]
+
+    print(f"{ticker} - {name}")
+    print(f"Observations: {len(prices)}")
+
+    if show_currency:
+        currency = asset["currency"]
+        print(f"First close: {first_close:.2f} {currency}")
+        print(f"Last close: {last_close:.2f} {currency}")
+    else:
+        print(f"First close: {first_close:.2f}")
+        print(f"Last close: {last_close:.2f}")
+
 def main():
     instruments = load_instruments()
     prices = load_prices()
@@ -41,20 +66,22 @@ def main():
 
     print("=== MarketPulse ===")
     print()
-    print("Instrument")
-    print(f"{instrument['ticker']} - {instrument['name']}")
-    print(f"Last price: {instrument_latest['close']} {instrument['currency']}")
-    print()
-    print("Benchmark")
-    print(f"{benchmark['ticker']} - {benchmark['name']}")
-    print(f"Last level: {benchmark_latest['close']}")
-    print()
+
+    print("Market configuration")
     print(f"Period: {LOOKBACK_LABEL}")
     print(f"Interval: {INTERVAL_LABEL}")
     print()
-    print("Observations")
-    print(f"{instrument['ticker']}: {len(instrument_prices)}")
-    print(f"{benchmark['ticker']}: {len(benchmark_prices)}")
+
+    print("Instrument")
+    display_market_summary(instrument, instrument_prices)
+    print()
+
+    print("Benchmark")
+    display_market_summary(
+        benchmark,
+        benchmark_prices,
+        show_currency=False
+    )
 
 
 if __name__ == "__main__":
