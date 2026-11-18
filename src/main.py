@@ -5,9 +5,6 @@ import json
 
 DATA_DIR = Path("data/sample")
 
-# These starter values mirror config/settings.yml.
-# settings.yml is a human-readable configuration contract in the CORE.
-# Parsing YAML is optional and is not required by the 18-hour lab sequence.
 LOOKBACK_LABEL = "1 month"
 INTERVAL_LABEL = "Daily"
 
@@ -33,11 +30,14 @@ def get_first_close(prices):
 def get_last_close(prices):
     return float(prices[-1]["close"])
 
+
 def get_first_date(prices):
     return prices[0]["date"]
 
+
 def get_last_date(prices):
     return prices[-1]["date"]
+
 
 def display_market_summary(asset, prices, show_currency=True):
     first_close = get_first_close(prices)
@@ -52,6 +52,7 @@ def display_market_summary(asset, prices, show_currency=True):
     print(f"Observations: {len(prices)}")
     print(f"First observation date: {first_date}")
     print(f"Last observation date: {last_date}")
+
     if show_currency:
         currency = asset["currency"]
         print(f"First close: {first_close:.2f} {currency}")
@@ -59,6 +60,7 @@ def display_market_summary(asset, prices, show_currency=True):
     else:
         print(f"First close: {first_close:.2f}")
         print(f"Last close: {last_close:.2f}")
+
 
 def main():
     instruments = load_instruments()
@@ -69,9 +71,6 @@ def main():
 
     instrument_prices = filter_prices(prices, instrument["ticker"])
     benchmark_prices = filter_prices(prices, benchmark["ticker"])
-
-    instrument_latest = instrument_prices[-1]
-    benchmark_latest = benchmark_prices[-1]
 
     print("=== MarketPulse ===")
     print()
