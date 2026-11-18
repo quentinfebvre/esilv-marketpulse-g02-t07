@@ -28,11 +28,20 @@ def get_first_close(prices):
 def get_last_close(prices):
     return float(prices[-1]["close"])
 
+def get_first_date(prices):
+    return prices[0]["date"]
+
+def get_last_date(prices):
+    return prices[-1]["date"]
+
 
 def display_market_summary(asset, prices, show_currency=True):
     print(f"Instrument" if show_currency else "Benchmark")
     print(f"{asset['ticker']} {asset['name']}")
     print(f"Observations: {len(prices)}")
+
+    print(f"First date  : {get_first_date(prices)}")
+    print(f"Last date   : {get_last_date(prices)}")
     
     currency_str = f" {asset['currency']}" if show_currency else ""
     print(f"First close : {get_first_close(prices):.2f}{currency_str}")
