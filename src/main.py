@@ -60,6 +60,8 @@ def main():
     benchmark_prices = filter_prices(prices, benchmark["ticker"])
 
     print("=== MarketPulse ===")
+    print ("Data source: Local CSV")
+
     print()
     print(f"Market configuration")
     print(f"Period : {LOOKBACK_LABEL}")
