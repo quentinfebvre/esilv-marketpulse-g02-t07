@@ -2,12 +2,10 @@ from pathlib import Path
 import csv
 import json
 
-
 DATA_DIR = Path("data/sample")
 
 LOOKBACK_LABEL = "1 month"
 INTERVAL_LABEL = "Daily"
-
 
 def load_instruments():
     with open(DATA_DIR / "instruments.json", encoding="utf-8") as file:
@@ -30,36 +28,25 @@ def get_first_close(prices):
 def get_last_close(prices):
     return float(prices[-1]["close"])
 
-
 def get_first_date(prices):
     return prices[0]["date"]
-
 
 def get_last_date(prices):
     return prices[-1]["date"]
 
 
 def display_market_summary(asset, prices, show_currency=True):
-    first_close = get_first_close(prices)
-    last_close = get_last_close(prices)
-    first_date = get_first_date(prices)
-    last_date = get_last_date(prices)
-
-    ticker = asset["ticker"]
-    name = asset["name"]
-
-    print(f"{ticker} - {name}")
+    print(f"Instrument" if show_currency else "Benchmark")
+    print(f"{asset['ticker']} {asset['name']}")
     print(f"Observations: {len(prices)}")
-    print(f"First observation date: {first_date}")
-    print(f"Last observation date: {last_date}")
 
-    if show_currency:
-        currency = asset["currency"]
-        print(f"First close: {first_close:.2f} {currency}")
-        print(f"Last close: {last_close:.2f} {currency}")
-    else:
-        print(f"First close: {first_close:.2f}")
-        print(f"Last close: {last_close:.2f}")
+    print(f"First date  : {get_first_date(prices)}")
+    print(f"Last date   : {get_last_date(prices)}")
+    
+    currency_str = f" {asset['currency']}" if show_currency else ""
+    print(f"First close : {get_first_close(prices):.2f}{currency_str}")
+    print(f"Last close  : {get_last_close(prices):.2f}{currency_str}")
+    print()
 
 
 def main():
@@ -74,23 +61,17 @@ def main():
 
     print("=== MarketPulse ===")
     print()
-
-    print("Market configuration")
-    print(f"Period: {LOOKBACK_LABEL}")
+    print(f"Market configuration")
+    print(f"Period : {LOOKBACK_LABEL}")
     print(f"Interval: {INTERVAL_LABEL}")
     print()
-
-    print("Instrument")
-    display_market_summary(instrument, instrument_prices)
-    print()
-
-    print("Benchmark")
-    display_market_summary(
-        benchmark,
-        benchmark_prices,
-        show_currency=False
-    )
+    
+    display_market_summary(instrument, instrument_prices, show_currency=True)
+    display_market_summary(benchmark, benchmark_prices, show_currency=False)
 
 
 if __name__ == "__main__":
     main()
+    #Feature: market analysis update
+    
+    
