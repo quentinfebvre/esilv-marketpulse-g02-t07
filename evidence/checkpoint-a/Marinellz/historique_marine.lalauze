@@ -1,0 +1,67 @@
+    1  git config user.name "Marine Lalauze"
+    2  git config use.mail "marine.lalauze@edu.devinci.fr"
+    3  git config user.mail "marine.lalauze@edu.devinci.fr"
+    4  git status
+    5  git add src/main.py
+    6  git commit -m "refactor: reuse market summary display and implement helpers"
+    7  git log --oneline
+    8  git checkout -b feature/market-analysis
+    9  git branc --show --current
+   10  git branch --show --current
+   11  git branch --show-current
+   12  git status
+   13  git add src/main.py
+   14  git commit --m "feat(analysis) : add market analysis comment"
+   15  git switch main
+   16  git merge feature/market-analysis
+   17  python src/main.py
+   18  git log --oneline --graph -5
+   19  git push -u origin main
+   20  git pull origin main
+   21  git pull origin main --no-rebase
+   22  git push -u origin main
+   23  git branch
+   24  git status
+   25  git switch -c feature/display-observation-dates
+   26  git branch
+   27  python src/main.py
+   28  git status
+   29  git diff
+   30  git add src/main.py
+   31  git commit --m "feat: display first and last obervation dates"
+   32  git log --oneline --graph --decorate -all
+   33  git log --oneline --graph --decorate --all
+   34  git diff main.. feature/display-observation-dates
+   35  git diff main..feature/display-observation-dates
+   36  git switch main
+   37  git branch
+   38  git merge feature/display-observation-dates
+   39  git log --oneline --graph --decorate --all
+   40  python src/main.py
+   41  git branch
+   42  git branch merg
+   43  git brandh merged
+   44  git log --oneline --graph --decorate --all
+   45  git branch -d featude/display-observation-dates
+   46  git branch -d feature/display-observation-dates
+   47  git branch 
+   48  git log --oneline --graph --decorate --all
+   49  git branch -d feature/display-observation-dates
+   50  git branch
+   51  mkdir -p evidence/checkpoint-a/Marinellz
+   52  python src/main.py
+   53  git status
+   54  git log --online -5
+   55  git log --oneline -5
+   56  git log --oneline --graph --decorate --all
+   57  get add evidence/
+   58  git add evidence/
+   59  git commit -m "docs: finalize Checkpoint A evidence"
+   60  git push origin main
+   61  git add evidence/checkpoint-a/Marinellz/README.me
+   62  git add evidence/checkpoint-a/Marinellz/READ.md
+   63  git add evidence/checkpoint-a/Marinellz/README.md
+   64  git commit -m "docs: add personal README for checkpoint a"
+   65  git push origin main
+   66  git status
+   67  history > historique_marine.lalauze
