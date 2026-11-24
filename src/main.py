@@ -2,6 +2,13 @@ from pathlib import Path
 import csv
 import json
 
+from analytics import (
+    align_series,
+    calculate_base_100,
+    calculate_period_return,
+    calculate_relative_performance,
+)
+
 DATA_DIR = Path("data/sample")
 
 LOOKBACK_LABEL = "1 month"
@@ -62,6 +69,22 @@ def main():
 
     print("=== MarketPulse ===")
     print ("Data source: Local CSV")
+
+    aligned_instrument, aligned_benchmark = align_series(instrument_prices, benchmark_prices)
+    instrument_return = calculate_period_return(aligned_instrument)
+    benchmark_return = calculate_period_return(aligned_benchmark)
+    relative_performance = calculate_relative_performance(instrument_return, benchmark_return)
+
+    instrument_base_100 = calculate_base_100(aligned_instrument)
+    benchmark_base_100 = calculate_base_100(aligned_benchmark)
+
+    print()
+    print(f"Aligned sessions: {len(aligned_instrument)}")
+    print(f"Instrument return: {instrument_return:+.2f}%")
+    print(f"Benchmark return: {benchmark_return:+.2f}%")
+    print(f"Relative performance: {relative_performance:+.2f} percentage points")
+    print(f"Instrument base 100 end: {instrument_base_100[-1]['value']:.2f}")
+    print(f"Benchmark base 100 end: {benchmark_base_100[-1]['value']:.2f}")
 
     print()
     print(f"Market configuration")
