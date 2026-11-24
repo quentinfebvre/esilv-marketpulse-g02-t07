@@ -2,7 +2,7 @@ from pathlib import Path
 import csv
 import json
 
-from src.analytics import (
+from analytics import (
     align_series,
     calculate_base_100,
     calculate_period_return,
@@ -69,8 +69,6 @@ def main():
 
     print("=== MarketPulse ===")
     print ("Data source: Local CSV")
-    display_market_summary(instrument, instrument_prices, show_currency=True)
-    display_market_summary(benchmark, benchmark_prices, show_currency=False)
 
     aligned_instrument, aligned_benchmark = align_series(instrument_prices, benchmark_prices)
     instrument_return = calculate_period_return(aligned_instrument)
