@@ -5,7 +5,7 @@
 Le fournisseur Bloomberg (`src/providers/bloomberg_provider.py`) permet d'adapter des données Bloomberg au format canonique commun de **MarketPulse**, afin de réutiliser les mêmes calculs analytiques (`src/analytics.py`) qu'avec Yahoo Finance.
 
 Deux modes sont distingués :
-- **`APPROVED_SAMPLE` (mode par défaut / reproductible)** : lit l'échantillon de référence approuvé (`data/sample/bloomberg_reference_sample.json`) sans nécessiter de Terminal Bloomberg, afin de démontrer et tester le mapping et la normalisation de façon reproductible.
+- **`APPROVED_SAMPLE` (mode par défaut / reproductible)** : lit l'échantillon de référence approuvé (`data/sample/bloomberg_reference_sample.json`) sans nécessiter de Terminal Bloomberg. Permet de démontrer et tester le mapping et la normalisation de façon reproductible.
 - **`LIVE` (environnement autorisé)** : point d'entrée prévu pour un accès à un Terminal Bloomberg autorisé. Aucune connexion réussie ne doit être simulée lorsque le mode n'est pas actif.
 
 ## 2. Identifiants AAPL / SP500
@@ -18,6 +18,8 @@ Bloomberg utilise ses propres identifiants de marché, distincts des tickers int
 | `SP500` | `SPX Index` | S&P 500 (indice) |
 
 Dans les observations canoniques produites par MarketPulse, la clé `ticker` doit contenir l'identifiant interne (`AAPL` ou `SP500`) et non l'identifiant Bloomberg.
+
+Dans les fichiers JSON de référence, une série est repérée par `provider_identifier` (par exemple `"AAPL US Equity"`), même si l'observation brute de l'exemple illustratif ci-dessous contient directement `canonical_ticker`.
 
 ## 3. Correspondance des champs et types
 
