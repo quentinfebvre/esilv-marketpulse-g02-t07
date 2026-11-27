@@ -51,7 +51,11 @@ Observation brute :
   "close_value": "110.0",
   "volume_value": "1500"
 }
+```
 
+Observation normalisée au format canonique :
+
+```json
 {
   "date": "2026-11-18",
   "ticker": "AAPL",
@@ -61,3 +65,10 @@ Observation brute :
   "close": 110.0,
   "volume": 1500
 }
+```
+
+## 5. Vérifications et limites du mode LIVE
+
+- Le mode `APPROVED_SAMPLE` doit rester le mode reproductible par défaut utilisable sans accès Bloomberg, en s'appuyant sur les fichiers de référence présents dans `data/sample/` (`bloomberg_reference_sample.json`, `bloomberg_reference_expected.json` et `instruments.json`).
+- Le hook `LIVE` n'est pas implémenté sans accès Bloomberg autorisé : il ne doit jamais simuler une connexion réussie ni renvoyer de fausses données, et doit lever `NotImplementedError` tant qu'il n'est pas actif.
+- Avant la normalisation, la structure des séries et des observations doit être validée (présence des champs requis, séries non vides, absence de dates dupliquées) afin de lever `ValueError` en cas d'anomalie.
